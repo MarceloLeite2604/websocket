@@ -1,0 +1,8 @@
+logging:
+  level:
+    root: INFO
+websocket:
+  paths:
+    - /chat
+  allowed-origins:
+    - http://localhost:3000
