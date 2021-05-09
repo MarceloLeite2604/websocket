@@ -10,11 +10,13 @@ export const App = () => {
 
   const [connected, setConnected] = useState(false);
   const { $connected, $inputMessage, $outputMessage } = useChatWebSocket<Message>();
+  const [message, setMessage] = useState<Message>();
 
   useEffect(() => {
     $connected.subscribe(setConnected);
     $inputMessage.subscribe(message => {
       console.log(`You received a message from ${message.from}: ${message.content}`);
+      setMessage(message);
     });
   }, []);
 
@@ -33,6 +35,7 @@ export const App = () => {
       <button
         disabled={!connected}
         onClick={sendMessage}>Send message</button>
+      {message && <p>You received a message from {message.from}: {message.content}</p>}
     </div >
   );
 };

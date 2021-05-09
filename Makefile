@@ -23,3 +23,5 @@ docker-compose: build-frontend build-backend
 	@docker-compose up --force-recreate
 
 clean: clean-frontend clean-backend
+
+all: docker-compose
